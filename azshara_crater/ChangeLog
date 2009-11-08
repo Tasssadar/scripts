@@ -1,0 +1,16 @@
+=== AZSHARA CRATER ===
+ - New custom raid on unused map no. 37 - Azshara crater
+ - lvl 80 10 man raid, T8 difficulity
+ - Scenario is NOT complete
+ - 3 bosses currently:
+   - Rasen: Felguard, spawn event?
+   - Sileth: Frostwyrm, Flyght/spawn event?
+   - Xavius: Satyr, ???
+ - vehicle system required
+ - for TrinityCore2 
+ 
+
+
+CHANGELOG 
+== 0.1 ==
+ - First version, few base files added, rough instance system - scenario is not complete :(
