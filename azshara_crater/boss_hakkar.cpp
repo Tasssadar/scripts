@@ -39,9 +39,9 @@ enum Creatures
     NPC_TEMP              = 16506
 };
 
-struct TRINITY_DLL_DECL boss_rasenAI : public BossAI
+struct TRINITY_DLL_DECL boss_hakkarAI : public BossAI
 {
-    boss_rasenAI(Creature *c) : BossAI(c, BOSS_RASEN)
+    boss_hakkarAI(Creature *c) : BossAI(c, BOSS_RASEN)
 	{
 		pInstance = c->GetInstanceData();
 	}
@@ -103,17 +103,17 @@ struct TRINITY_DLL_DECL boss_rasenAI : public BossAI
     }
 };
 
-CreatureAI* GetAI_boss_rasen(Creature* pCreature)
+CreatureAI* GetAI_boss_hakkar_ac(Creature* pCreature)
 {
-    return new boss_rasenAI (pCreature);
+    return new boss_hakkarAI (pCreature);
 }
 
 void AddSC_boss_rasen()
 {
     Script *newscript;
     newscript = new Script;
-    newscript->Name = "boss_rasen";
-    newscript->GetAI = &GetAI_boss_rasen;
+    newscript->Name = "boss_hakkar_ac";
+    newscript->GetAI = &GetAI_boss_hakar_ac;
     newscript->RegisterSelf();
 }
 

@@ -3,14 +3,18 @@
  - lvl 80 10 man raid, T8 difficulity
  - Scenario is NOT complete
  - 3 bosses currently:
-   - Rasen: Felguard, spawn event?
+   - before hakkar, spawn & defend event
+   - Hakkar: Felguard, spawn event?
    - Sileth: Frostwyrm, Flyght/spawn event?
    - Xavius: Satyr, ???
- - vehicle system required
  - for TrinityCore2 
  
 
 
-CHANGELOG 
-== 0.1 ==
+CHANGELOG
+== 2 ==
+ - Few creatures added to sql
+ - Rasen renamed to Hakkar
+ - Now you will get night elf model when enter instance 
+== 1 ==
  - First version, few base files added, rough instance system - scenario is not complete :(

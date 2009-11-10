@@ -26,6 +26,11 @@
 2 - Sileth
 3 - Xavius*/
 
+enum Models
+{
+	MODEL_ELF_FORM_FEMALE							= 19112,
+	MODEL_ELF_FORM_MALE								= 19116
+}
 enum Creatures
 {
 	CREATURE_KRASUS				                    = 50053,
@@ -72,6 +77,14 @@ struct TRINITY_DLL_DECL instance_azshara : public ScriptedInstance
 
         return false;
     }
+
+	void OnPlayerEnter(Player* pPlayer)
+	{
+		if(pPlayer->getGender() == GENDER_FEMALE)
+		{
+			pPlayer->SetDisplayId(MODEL_ELF_FORM_FEMALE);
+		}else pPlayer->SetDisplayId(MODEL_ELF_FORM_MALE);
+	}
 
     void OnCreatureCreate(Creature* pCreature, bool add)
     {

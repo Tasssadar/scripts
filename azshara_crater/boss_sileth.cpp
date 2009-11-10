@@ -39,9 +39,9 @@ enum Creatures
     NPC_TEMP              = 16506
 };
 
-struct TRINITY_DLL_DECL boss_silethAI : public BossAI
+struct TRINITY_DLL_DECL boss_silethAI : public ScriptedAI
 {
-    boss_silethAI(Creature *c) : BossAI(c, BOSS_SILETH)
+    boss_silethAI(Creature *c) : ScriptedAI(c)
 	{
 		pInstance = c->GetInstanceData();
 	}
@@ -52,8 +52,11 @@ struct TRINITY_DLL_DECL boss_silethAI : public BossAI
 	{
 		if (pInstance)
 			pInstance->SetData(PHASE_RASEN,NOT_STARTED);
+		me->Hande
+		me->HandleEmoteCommand(EMOTE_ONESHOT_LIFTOFF);
+        me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+        me->SendMovementFlagUpdate();
 
-		 events.ScheduleEvent(EVENT_TEMP, urand(12000,15000));
 	}
     void EnterCombat(Unit *who)
     {
@@ -63,7 +66,7 @@ struct TRINITY_DLL_DECL boss_silethAI : public BossAI
 
     void MoveInLineOfSight(Unit *who)
     {
-      BossAI::MoveInLineOfSight(who);
+		who->EnterVehicle(	
     }
 
     void KilledUnit(Unit* victim)
@@ -73,32 +76,25 @@ struct TRINITY_DLL_DECL boss_silethAI : public BossAI
 
     void JustDied(Unit* Killer)
     {
-        _JustDied();
+
 
     }
 	
 	void SpellHit(Unit* caster, const SpellEntry *spell)
     {
-       
+		
+       if(spell->Id == 116)
+	   {
+		me->HandleEmoteCommand(EMOTE_ONESHOT_LAND);
+                       me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                        me->SendMovementFlagUpdate();
+	   }
     }
 
     void UpdateAI(const uint32 diff)
     {
         if (!UpdateVictim())
             return;
-
-        events.Update(diff);
-
-        while(uint32 eventId = events.ExecuteEvent())
-        {
-            switch(eventId)
-            {
-                case EVENT_TEMP:
-                   
-					events.ScheduleEvent(EVENT_TEMP, urand(12000,15000));
-                    return;
-            }
-        }
 
         DoMeleeAttackIfReady();
     }
